@@ -2,20 +2,20 @@
 Java 开发领域，热更新一直是一个难以解决的问题。
 目前用的是 **java.lang.instrument** 的 **agentmain** 方法来实现，该方法可以实现运行时动态更新class文件，但是也有局限性，它只能修改方法级别的更新，对类结构的改变（增加属性或方法）还是要重启。
 
-# 一般有三部分（工程）组成 #
+## 一般有三部分（工程）组成 ##
 
-## 代理工程（agentmain方法所在工程）。 ##
+### 代理工程（agentmain方法所在工程）。 ###
 必须单独创建一个Java工程，后面是需要打包成单独的 Jar 包,放到执行更新的逻辑程序中，让其调用。
 
-## 执行更新的逻辑程序 ##
+### 执行更新的逻辑程序 ###
 可以单独一个程序，也可以跟目标程序放在同个工程,我这里就是跟目标工程放在一起。
 
-## 目标程序 ##
+### 目标程序 ###
 也就是我们要热更的程序
 
-# 一、代理工程(hotupdate_agent) #
+## 一、代理工程(hotupdate_agent) ##
 
-## 1.定义代理类 ##
+### 1.定义代理类 ###
     public class MyAgent {
 
 	/**
@@ -47,7 +47,7 @@ Java 开发领域，热更新一直是一个难以解决的问题。
 		}
 	}
 
-## 2.自定义类加载器： ##
+### 2.自定义类加载器： ###
 
     public class DynamicClassLoader extends ClassLoader {
 		public Class<?> findClass(byte[] b) throws ClassNotFoundException { 
@@ -55,7 +55,7 @@ Java 开发领域，热更新一直是一个难以解决的问题。
 		}
 	}
 
-## 3.编写 MANIFEST.MF ##
+### 3.编写 MANIFEST.MF ###
 在pom.xml中加入：
 
     <build>
@@ -70,13 +70,13 @@ Java 开发领域，热更新一直是一个难以解决的问题。
                             <addClasspath>true</addClasspath>
                         </manifest>
                         <manifestEntries>
-							<!--指定 agentmain 方法所在的类路径-->
+						<!--指定 agentmain 方法所在的类路径-->
                             <Agent-Class>
                                 hotupdate.agent.MyAgent
                             </Agent-Class>
-							<!--是否能重定义此代理所需的类-->
+						<!--是否能重定义此代理所需的类-->
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
-							<!--是否能重新转换此代理所需的类-->
+						<!--是否能重新转换此代理所需的类-->
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>
                     </archive>
@@ -99,9 +99,9 @@ Java 开发领域，热更新一直是一个难以解决的问题。
 最后，将该工程打包成jar，放到“更新程序”的工程里面（这里是目标程序）
 **hotupdate/agent/hotupdate_agent-0.0.1-SNAPSHOT.jar**
 
-![](https://github.com/caiweitao/image-folder/blob/master/hotupdate/hotupdate_gameserver.png)
+![Image text](https://raw.githubusercontent.com/caiweitao/image-folder/master/hotupdate/hotupdate_gameserver.png)
 
-# 二、更新程序（hotupdate_gameserver） #
+## 二、更新程序（hotupdate_gameserver） ##
 
     public class HotUpdateClass {
 	
@@ -142,8 +142,8 @@ Java 开发领域，热更新一直是一个难以解决的问题。
 
 这个函数就是在我们想要热更的时候执行的。
 
-# 三、目标程序（hotupdate_gameserver） #
-### 创建一个目标工程来测试代码 ###
+## 三、目标程序（hotupdate_gameserver） ##
+#### 创建一个目标工程来测试代码 ####
 
     public class TestHot {
 		@Override
@@ -152,7 +152,7 @@ Java 开发领域，热更新一直是一个难以解决的问题。
 		}
 	}
 
-### 先把TestHot更新后的编译好放在 **hotupdate/class/** 目录下。再把它改一下做更新前用 ###
+#### 先把TestHot更新后的编译好放在 **hotupdate/class/** 目录下。再把它改一下做更新前用 ####
 
      public class TestHot {
 		@Override
@@ -160,7 +160,7 @@ Java 开发领域，热更新一直是一个难以解决的问题。
 			return "热更前：111111111";
 		}
 	}
-### 最后编写测试主程序测试一下 ###
+#### 最后编写测试主程序测试一下 ####
 
     public class GameServerMain {
 		public static void main(String[] args) throws InterruptedException {
@@ -186,4 +186,4 @@ Java 开发领域，热更新一直是一个难以解决的问题。
 
 看一下效果：
 
-![](https://github.com/caiweitao/image-folder/blob/master/hotupdate/test_result.png)
+![Image text](https://raw.githubusercontent.com/caiweitao/image-folder/master/hotupdate/hotupdate_gameserver.png)
