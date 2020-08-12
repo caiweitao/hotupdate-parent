@@ -99,7 +99,7 @@ Java 开发领域，热更新一直是一个难以解决的问题。
 最后，将该工程打包成jar，放到“更新程序”的工程里面（这里是目标程序）
 **hotupdate/agent/hotupdate_agent-0.0.1-SNAPSHOT.jar**
 
-![Image text](https://raw.githubusercontent.com/caiweitao/image-folder/master/hotupdate/hotupdate_gameserver.png)
+![Image text](https://github.com/caiweitao/img-folder/blob/master/hotupdate/hotupdate_gameserver.png)
 
 ## 二、更新程序（hotupdate_gameserver） ##
 
@@ -186,4 +186,4 @@ Java 开发领域，热更新一直是一个难以解决的问题。
 
 看一下效果：
 
-![Image text](https://raw.githubusercontent.com/caiweitao/image-folder/master/hotupdate/test_result.png)
+![Image text](https://raw.githubusercontent.com/caiweitao/img-folder/master/hotupdate/test_result.png)
