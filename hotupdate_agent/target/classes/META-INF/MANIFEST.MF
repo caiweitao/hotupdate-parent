@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Built-By: Admin
+Build-Jdk: 1.7.0_55
+Agent-Class: hotupdate.agent.MyAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>hotupdate.model</groupId>
+    <artifactId>hotupdate-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>hotupdate.model</groupId>
+  <artifactId>hotupdate_gameserver</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>hotupdate_gameserver</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+		<dependency> 
+			<groupId>com.sun</groupId>
+			<artifactId>tools</artifactId>
+			<version>1.7</version>
+			<scope>system</scope>
+			<systemPath>C:/Program Files/Java/jdk1.7.0_55/lib/tools.jar</systemPath>
+		</dependency>
+  </dependencies>
+</project>
