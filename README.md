@@ -186,4 +186,4 @@ Java 开发领域，热更新一直是一个难以解决的问题。
 
 看一下效果：
 
-![Image text](https://raw.githubusercontent.com/caiweitao/image-folder/master/hotupdate/hotupdate_gameserver.png)
+![Image text](https://raw.githubusercontent.com/caiweitao/image-folder/master/hotupdate/test_result.png)
