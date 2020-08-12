@@ -12,12 +12,12 @@ public class GameServerMain {
 						Thread.sleep(1000);
 						System.err.println(t);
 					}catch(Exception e){
-
+						e.printStackTrace();
 					}
 				}
 			}
 		}).start();
-		Thread.sleep(3000); //主线程先暂停一会，形成对比效果
+		Thread.sleep(2000); //主线程先暂停一会，形成对比效果
 		HotUpdateClass.updateClass("TestHot");
 	}
 
